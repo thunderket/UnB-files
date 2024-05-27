@@ -1,10 +1,9 @@
-Para implementar esse sistema de alarme com RFID e um LED, você precisará montar um circuito com componentes específicos e fazer as conexões corretamente. Aqui está uma explicação detalhada de como o esquema funcionaria:
 
 ### Componentes Necessários
 1. **Arduino Uno** (ou qualquer outra placa Arduino compatível)
 2. **Módulo RFID MFRC522**
 3. **Buzzer**
-4. **Relé** (opcional, não usado neste exemplo)
+4. **Relé** (n useI)
 5. **Sensor Magnético** (como um interruptor reed)
 6. **Botão de Alarme**
 7. **LED**
@@ -40,9 +39,8 @@ Para implementar esse sistema de alarme com RFID e um LED, você precisará mont
 - **Cátodo (perna curta)**: GND no Arduino (através de um resistor, normalmente 220Ω)
 
 ### Diagrama de Conexão
-Aqui está um diagrama básico para as conexões:
 
-```plaintext
+```plaintext (THANKS CHATGPT FOR THIS)
                +-------------+
                |    Arduino  |
                +----+---+----+
