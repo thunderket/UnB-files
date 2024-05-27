@@ -1,0 +1,34 @@
+Para montar o sistema RFID no Arduino conforme você descreveu, você precisará dos seguintes componentes:
+
+Arduino (Uno, Mega, ou outro)
+Módulo RFID (RC522 é uma opção comum)
+Buzzer (para o alarme)
+LEDs (uma vermelha e uma verde)
+Resistores (para os LEDs, normalmente 220Ω)
+Jumpers (fios de conexão)
+Fonte de alimentação (pode ser o cabo USB do Arduino)
+Passos para montagem do hardware:
+Conectando o módulo RFID RC522 ao Arduino:
+
+SDA -> Pin 10
+SCK -> Pin 13
+MOSI -> Pin 11
+MISO -> Pin 12
+IRQ -> (não conectado)
+GND -> GND do Arduino
+RST -> Pin 9
+3.3V -> 3.3V do Arduino
+Conectando o Buzzer:
+
+Terminal positivo do buzzer -> Pin 8 do Arduino
+Terminal negativo do buzzer -> GND do Arduino
+Conectando os LEDs:
+
+LED Vermelho:
+Anodo (perna longa) -> Pin 7 do Arduino (via resistor de 220Ω)
+Catodo (perna curta) -> GND do Arduino
+LED Verde:
+Anodo (perna longa) -> Pin 6 do Arduino (via resistor de 220Ω)
+Catodo (perna curta) -> GND do Arduino
+Código Arduino:
+Você precisará de algumas bibliotecas adicionais para trabalhar com o RFID. Instale a biblioteca MFRC522 via o Library Manager no Arduino I
