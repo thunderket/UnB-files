@@ -1,0 +1,51 @@
+#include <SPI.h>
+#include <MFRC522.h>
+
+#define SS_PIN 10
+#define RST_PIN 9
+MFRC522 mfrc522(SS_PIN, RST_PIN); 
+
+#define BUZZER_PIN 8
+#define LED_RED_PIN 7
+#define LED_GREEN_PIN 6
+
+void setup() {
+  Serial.begin(9600);
+  SPI.begin();
+  mfrc522.PCD_Init();
+
+  pinMode(BUZZER_PIN, OUTPUT);
+  pinMode(LED_RED_PIN, OUTPUT);
+  pinMode(LED_GREEN_PIN, OUTPUT);
+
+  // Inicializa com o alarme e LED vermelho ligados
+  digitalWrite(BUZZER_PIN, HIGH);
+  digitalWrite(LED_RED_PIN, HIGH);
+  digitalWrite(LED_GREEN_PIN, LOW);
+
+  Serial.println("Aproxime o cartão RFID para desativar o alarme.");
+}
+
+void loop() {
+  if (!mfrc522.PICC_IsNewCardPresent()) {
+    return;
+  }
+  if (!mfrc522.PICC_ReadCardSerial()) {
+    return;
+  }
+
+  // Quando um cartão é lido, desativa o alarme e acende o LED verde
+  digitalWrite(BUZZER_PIN, LOW);
+  digitalWrite(LED_RED_PIN, LOW);
+  digitalWrite(LED_GREEN_PIN, HIGH);
+
+  Serial.println("Cartão RFID reconhecido, alarme desativado.");
+
+  // Aguarda alguns segundos antes de permitir nova leitura
+  delay(3000);
+
+  // Volta ao estado inicial para nova detecção
+  digitalWrite(BUZZER_PIN, HIGH);
+  digitalWrite(LED_RED_PIN, HIGH);
+  digitalWrite(LED_GREEN_PIN, LOW);
+}
